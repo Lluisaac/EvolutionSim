@@ -2,6 +2,9 @@
 
 public class Buisson extends Plante {
 	
+	private static final int RATIO_REPRODUCTION = 3;
+	private static final int RATIO_DIMINUTION_FERTILITE = 8;
+	
 	public Buisson(Terre endroit) {
 		super(endroit);
 	}
@@ -31,7 +34,7 @@ public class Buisson extends Plante {
 		
 		boolean conditionsValides = Terre.isTerreValide(emplacement);
 		
-		boolean ilFautFaireReproduireLaPlante = Aleatoire.testerProbabiliteSur(3);
+		boolean ilFautFaireReproduireLaPlante = Aleatoire.testerProbabiliteSur(RATIO_REPRODUCTION);
 		if (ilFautFaireReproduireLaPlante && conditionsValides) {
 			poserPlante(emplacement);
 		}
@@ -46,7 +49,7 @@ public class Buisson extends Plante {
 	}
 	
 	private void faireLaDiminutionDeFertilite() {
-		boolean diminuerLaFertilite = Aleatoire.testerProbabiliteSur(8);
+		boolean diminuerLaFertilite = Aleatoire.testerProbabiliteSur(RATIO_DIMINUTION_FERTILITE);
 		if (diminuerLaFertilite) {
 			getTerre().diminuerFertilite();
 		}

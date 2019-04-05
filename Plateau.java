@@ -5,6 +5,8 @@ public class Plateau {
 	
 	public static final int TAILLE_PLATEAU = 46;
 	
+	private static final int TEMPS_ATTENTE_ENTRE_TOURS = 50;
+	
 	private static Plateau singleton;
 	
 	private Case[][] damier;
@@ -88,7 +90,7 @@ public class Plateau {
 	
 	private void attendre() {
 		try {
-			Thread.sleep(50) ;
+			Thread.sleep(TEMPS_ATTENTE_ENTRE_TOURS) ;
 		}  catch (InterruptedException e) {}
 	}
 	

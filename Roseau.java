@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class Roseau extends Plante {
 	
+	private static final int RATIO_DIMINUTION_FERTILITE = 2;
+	
 	public Roseau(Terre endroitDeLaPlante) {
 		super(endroitDeLaPlante);
 	}
@@ -69,7 +71,7 @@ public class Roseau extends Plante {
 	}
 	
 	private void faireLaDiminutionDeFertilite() {
-		boolean ilFautDiminuerLaFertilite = Aleatoire.testerProbabiliteSur(2);
+		boolean ilFautDiminuerLaFertilite = Aleatoire.testerProbabiliteSur(RATIO_DIMINUTION_FERTILITE);
 		if (ilFautDiminuerLaFertilite) {
 			getTerre().diminuerFertilite();
 		}
