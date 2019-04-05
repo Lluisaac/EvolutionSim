@@ -5,12 +5,12 @@ public class Terre extends Case{
 	public static final int FERTILITE_MAX = 5;
 	public static final int FERTILITE_MIN = 0;
 	
-	public static final int INDICE_ACTIVATION_FERTILITE = 60;
-	public static final int INDICE_ACTIVATION_APPARITION = 1000000;
+	public static final int RATIO_ACTIVATION_FERTILITE = 60;
+	public static final int RATIO_ACTIVATION_APPARITION = 1000000;
 	
 	private int fertilite;
 	
-	private Plante plante;
+	private Plante plantePosee;
 	
 	public Terre(Coordonnee emplacement) {
 		super(emplacement);
@@ -22,7 +22,7 @@ public class Terre extends Case{
 		String str = "";
 		
 		if (contiensUnePlante()) {
-			str += plante;
+			str += plantePosee;
 		} else {
 			str += " ";
 		}
@@ -31,7 +31,7 @@ public class Terre extends Case{
 	}
 	
 	public boolean contiensUnePlante() {
-		return plante != null;
+		return plantePosee != null;
 	}
 	
 	public void fairePousserUneNouvellePlante() {
@@ -39,19 +39,22 @@ public class Terre extends Case{
 		ajouterPlante(maNouvellePlante);
 	}
 	
-	public void ajouterPlante(Plante plante) {
-		boolean planteEstPlantable = !contiensUnePlante();
-		if (planteEstPlantable) {
-			this.plante = plante;
+	public void ajouterPlante(Plante nouvellePlante) {
+		boolean plantePoseeEstPlantable = !contiensUnePlante();
+		if (plantePoseeEstPlantable) {
+			plantePosee = nouvellePlante;
 		}
 	}
 	
-	public void remplacerPlante(Plante plante) {
-		this.plante = plante;
+	public void remplacerPlante(Plante nouvellePlante) {
+		if (contiensUnePlante()) {
+			plantePosee.tuerLaPlante();
+		}
+		plantePosee = nouvellePlante;
 	}
 	
 	public void supprimerPlante() {
-		plante = null;
+		plantePosee = null;
 	}
 	
 	public int getFertilite() {
@@ -99,21 +102,21 @@ public class Terre extends Case{
 	protected void faireLeComportementDeLaCase() {
 		augmenterAleatoirementLaFertilite();
 		if (contiensUnePlante()) {
-			plante.faireComportement();
+			plantePosee.faireComportement();
 		} else {
 			fairePousserAleatoirementUneNouvellePlante();
 		}
 	}
 	
 	private void augmenterAleatoirementLaFertilite() {
-		boolean augmenterLaFertilite = Aleatoire.testerProbabiliteSur(INDICE_ACTIVATION_FERTILITE);
+		boolean augmenterLaFertilite = Aleatoire.testerProbabiliteSur(RATIO_ACTIVATION_FERTILITE);
 		if (augmenterLaFertilite) {
 			augmenterFertilite();
 		}
 	}
 	
 	private void fairePousserAleatoirementUneNouvellePlante() {
-		boolean fairePousserPlante = Aleatoire.testerProbabiliteSur(INDICE_ACTIVATION_APPARITION);
+		boolean fairePousserPlante = Aleatoire.testerProbabiliteSur(RATIO_ACTIVATION_APPARITION);
 		if (fairePousserPlante) {
 			fairePousserUneNouvellePlante();
 		}

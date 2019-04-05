@@ -40,16 +40,16 @@ public abstract class Plante implements Entite {
 		this.estMorte = estMorte;
 	}
 	
+	public void tuerLaPlante() {
+		endroitDeLaPlante.supprimerPlante();
+		estMorte = true;
+	}
+	
 	protected void essayerDeFaireMourirLaPlante() {
 		int fertilite = endroitDeLaPlante.getFertilite();
 		if (fertilite == 0) {
 			tuerLaPlante();
 		}
-	}
-	
-	protected void tuerLaPlante() {
-		endroitDeLaPlante.supprimerPlante();
-		estMorte = true;
 	}
 	
 	protected void seReproduire() {		
