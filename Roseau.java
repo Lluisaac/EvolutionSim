@@ -29,8 +29,7 @@ public class Roseau extends Plante {
 	protected void essayerDeFaireMourirLaPlante() {
 		int fertilite = getTerre().getFertilite();
 		if (fertilite <= 1) {
-			getTerre().supprimerPlante();
-			setMorte(true);
+			laTuer();
 		}
 	}
 	

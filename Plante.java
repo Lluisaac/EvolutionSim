@@ -43,9 +43,13 @@ public abstract class Plante implements Entite {
 	protected void essayerDeFaireMourirLaPlante() {
 		int fertilite = endroitDeLaPlante.getFertilite();
 		if (fertilite == 0) {
-			endroitDeLaPlante.supprimerPlante();
-			estMorte = true;
+			laTuer();
 		}
+	}
+	
+	protected void laTuer() {
+		endroitDeLaPlante.supprimerPlante();
+		estMorte = true;
 	}
 	
 	protected void seReproduire() {		
