@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Plateau {
 	
@@ -14,6 +13,7 @@ public class Plateau {
 	private int tour;
 	
 	private Plateau() {
+		Coordonnee.setTailleMaximum(TAILLE_PLATEAU, TAILLE_PLATEAU);
 		this.damier = new Case[TAILLE_PLATEAU][TAILLE_PLATEAU];
 		remplirLeDamier();
 		this.tour = 0;
@@ -108,7 +108,7 @@ public class Plateau {
 	}
 	
 	private void placerCoordonneeAleatoirementDansLaSequence(Coordonnee coord, ArrayList<Coordonnee> ordreAlea) {
-		Random rand = new Random();
+		Aleatoire rand = Aleatoire.getInstance();
 		int placement = rand.nextInt(ordreAlea.size() + 1);
 		ordreAlea.add(placement, coord);
 	}

@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public class Roseau extends Plante {
 	
@@ -48,7 +47,7 @@ public class Roseau extends Plante {
 	
 	@Override
 	protected Coordonnee trouverNouvelEmplacement() {
-		Random rand = new Random();
+		Aleatoire rand = Aleatoire.getInstance();
 		int x = 0;
 		int y = 0;
 		while (x == 0 && y == 0) {

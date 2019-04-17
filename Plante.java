@@ -1,4 +1,4 @@
-import java.util.Random;
+
 
 public abstract class Plante implements Entite {
 	
@@ -64,7 +64,7 @@ public abstract class Plante implements Entite {
 	}
 	
 	protected Coordonnee trouverNouvelEmplacement() {
-		Random rand = new Random();
+		Aleatoire rand = Aleatoire.getInstance();
 		int x = 0;
 		int y = 0;
 		while (x == 0 && y == 0) {

@@ -1,9 +1,9 @@
-import java.util.Random;
+
 
 public abstract class PlanteFactory {
 	
 	public static Plante getInstance(Terre endroit) {
-		Random rand = new Random();
+		Aleatoire rand = Aleatoire.getInstance();
 		int choix = rand.nextInt(2);
 		
 		switch(choix) {

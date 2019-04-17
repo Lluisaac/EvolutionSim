@@ -7,6 +7,7 @@ DOSKEY javar=del /f *.class
 
 public class Main {
 	public static void main(String[] args) {
+		Aleatoire.insererSeed(1544L);
 		Plateau plateau = Plateau.getInstance();
 		plateau.faireSimulation();
 	}
